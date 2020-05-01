@@ -110,9 +110,10 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
             
             let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoIdentifier)
             av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            annotationView = av
+            annotationView = av // in case the dequeue fails, create a default one
         }
         
+        //customise the annotationView
         if let annotationView = annotationView, let anno = annotation as? PokeAnnotation {
             
             annotationView.canShowCallout = true // have to set title if not will crash
